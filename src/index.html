@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <link href='css/core/main.min.css' rel='stylesheet' />
+    <link href='css/daygrid/main.min.css' rel='stylesheet' />
+    <link href='css/timegrid/main.min.css' rel='stylesheet' />
+    <link href='css/list/main.min.css' rel='stylesheet' />
+
+    <script src='js/core/main.min.js'></script>
+    <script src='js/interaction/main.min.js'></script>
+    <script src='js/daygrid/main.min.js'></script>
+    <script src='js/timegrid/main.min.js'></script>
+    <script src='js/list/main.min.js'></script>
+    <script src='js/core/locales/pt-br.js'></script>
+    <script>
+        // carrega o calendario
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                // difinido local 
+                locale: 'pt-br',
+                plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+
+                navLinks: true,
+                businessHours: true,
+                editable: true,
+                eventLimit: true,
+                events: [{
+                        title: 'MARIA JULIA',
+                        idPedidos: '1',
+                        nomeCliente: 'MARIA JULIA',
+                        telefone: '(27)99877-3211',
+                        start: '2019-10-05T11:00:00',
+                        tipoBolo: 'BOLO FESTA', //SE FOR BOLO FESTA HABILITA TAMANHO
+                        tamanho: '3 KG', // DEPENDENDO DO TAMANHO, VARIA A QTD DE RECHEIO
+                        massa: 'CHOCOLATE',
+                        recheio1: 'BEIJINHO',
+                        recheio2: 'CHOCOLATE C/ GOTAS',
+                        recheio3: 'BRIGADEIRO BRANCO COM GELEIA DE FRUTAS VERMELHAS',
+                        observacao: ' chantininho com flores'
+                    }, {
+                        title: 'Bolo rosas',
+                        start: '2019-10-15T11:00:00',
+                        constraint: 'availableForMeeting', // defined below
+                        color: '#257e4a'
+                    }, {
+                        title: 'Bolo festa',
+                        start: '2019-10-05',
+                        end: '2019-08-20',
+                        color: '#00a65a'
+                    }, {
+                        title: 'Bolo de chocolate',
+                        start: '2019-10-25T20:00:00',
+                        color: '#3c8dbc'
+                    },
+
+                    {
+                        title: 'Bolo festa branco',
+                        start: '2019-10-12T12:00:00'
+                    }, {
+                        title: 'Bolo 3kg',
+                        start: '2019-10-17T14:30:00'
+                    }, {
+                        title: 'Bolo festa chocolate',
+                        start: '2019-10-15T17:30:00'
+                    }, {
+                        title: 'bolo festa brilho',
+                        start: '2019-10-28T20:00:00'
+                    },
+
+                    // areas where "Meeting" must be dropped
+                    {
+                        groupId: 'availableForMeeting',
+                        start: '2019-08-11T10:00:00',
+                        end: '2019-08-11T16:00:00',
+                        rendering: 'background'
+                    }, {
+                        groupId: 'availableForMeeting',
+                        start: '2019-08-13T10:00:00',
+                        end: '2019-08-13T16:00:00',
+                        rendering: 'background'
+                    },
+
+                    // red areas where no events can be dropped
+                    {
+                        start: '2019-08-24',
+                        end: '2019-08-28',
+                        overlap: false,
+                        rendering: 'background',
+                        color: '#ff9f89'
+                    }, {
+                        start: '2019-08-06',
+                        end: '2019-08-08',
+                        overlap: false,
+                        rendering: 'background',
+                        color: '#ff9f89'
+                    }
+                ],
+                // ao clicar num evento já adicionado, vemos mais detalhes 
+                eventClick: function(info) {
+                    alert('Event: ' + info.event.title);
+
+                    // change the border color just for fun
+                    info.el.style.borderColor = 'white';
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
+    <style>
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <title>Cantinho bolo da Vovó</title>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- barra do topo -->
+            <div id="content">
+
+                <nav class="navbar navbar-expand navbar-dark bg-pd-color4 mb-8 static-top shadtopbarow">
+                    <a class="navbar-brand" href="#">Cantinho bolo da vovó</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Alterna navegação">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+
+                    <ul class="navbar-nav ml-auto">
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Informações do usuário -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 great">Usuário</span>
+                                <img class="img-profile rounded-circle" src="assets/img/user-solid.svg/60x60" alt="">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Perfil
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Sair
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+        <!-- Fim do navbar -->
+
+        <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-pd-color2">
+    <a class="navbar-brand" href="#">Cantinho bolo da vovó</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown mr-4">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+            Usuário
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="#">Sair</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+
+        <div class="container-fluid font-weight-bold">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-pd-color6 sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                        </ul>
+
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Ações</span>
+                            <a class="d-flex align-items-center text-muted" href="#">
+                                <span data-feather="plus-circle"></span>
+                            </a>
+                        </h6>
+                        <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span> Agenda de Pedidos
+                                </a>
+                            </li>
+                            <!-- Cad -->
+                            <div class="sidebar-heading">
+                                Cadastro
+                            </div>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span> Bolos
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <span data-feather="file-text"></span> Recheio
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="content-wrapper ml-5">
+                    <section class="content-header ">
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-8">
+                                    <h2>Agenda de Pedidos</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.container-fluid -->
+                    </section>
+
+                    <div id='calendar'></div>
+                </div>
+
+
+
+
+                <script src="js/jquery.js"></script>
+                <script src="js/popper.js"></script>
+                <script src="js/bootstrap.js"></script>
+                <script src="js/bootstrap.bundle.js"></script>
+
+</body>
+
+</html>

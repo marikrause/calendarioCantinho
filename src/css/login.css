@@ -1,0 +1,28 @@
+body{
+    font-family: 'Franklin Gothic Medium', sans-serif sans-serif;
+    background: url(/assets/img/chantininho-brnc.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.main-section{
+    margin: 0 auto;
+    margin-top: 120px;
+    padding: 0;
+}
+
+.modal-content{
+    opacity: .99;
+    box-shadow: 0px 0px 5px mistyrose;
+}
+
+.user-img img{
+    height: 200px;
+    width: 250px;
+    border-radius: 10px;
+
+}
+
+.form-label-group{
+    margin-bottom: 25px;
+    padding: 5px 10px;
+}
