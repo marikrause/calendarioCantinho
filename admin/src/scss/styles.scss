@@ -1,0 +1,12 @@
+// Cores padrao
+$pd-color1: #FAA300;
+$pd-color2: #D33038;
+$pd-color3: hsl(0, 93%, 42%);
+$pd-color4: #800E13;
+$pd-color5: #250902;
+$pd-color6: #FFFFE3;
+$theme-colors:( "pd-color1":$pd-color1, "pd-color2":$pd-color2, "pd-color3":$pd-color3, "pd-color4":$pd-color4, "pd-color5":$pd-color5, "pd-color6":$pd-color6);
+// personalizados
+$link-color: $pd-color1;
+// importA  bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
