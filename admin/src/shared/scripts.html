@@ -1,0 +1,112 @@
+<script src='js/core/main.min.js'></script>
+<script src='js/interaction/main.min.js'></script>
+<script src='js/daygrid/main.min.js'></script>
+<script src='js/timegrid/main.min.js'></script>
+<script src='js/list/main.min.js'></script>
+<script src='js/core/locales/pt-br.js'></script>
+<script>
+    // carrega o calendario
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            // difinido local 
+            locale: 'pt-br',
+            plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+            },
+
+            navLinks: true,
+            businessHours: true,
+            editable: true,
+            eventLimit: true,
+            events: [{
+                    title: 'MARIA JULIA',
+                    idPedidos: '1',
+                    nomeCliente: 'MARIA JULIA',
+                    telefone: '(27)99877-3211',
+                    start: '2019-10-05T11:00:00',
+                    tipoBolo: 'BOLO FESTA', //SE FOR BOLO FESTA HABILITA TAMANHO
+                    tamanho: '3 KG', // DEPENDENDO DO TAMANHO, VARIA A QTD DE RECHEIO
+                    massa: 'CHOCOLATE',
+                    recheio1: 'BEIJINHO',
+                    recheio2: 'CHOCOLATE C/ GOTAS',
+                    recheio3: 'BRIGADEIRO BRANCO COM GELEIA DE FRUTAS VERMELHAS',
+                    observacao: ' chantininho com flores'
+                }, {
+                    title: 'Bolo rosas',
+                    start: '2019-10-15T11:00:00',
+                    constraint: 'availableForMeeting', // defined below
+                    color: '#257e4a'
+                }, {
+                    title: 'Bolo festa',
+                    start: '2019-10-05',
+                    end: '2019-08-20',
+                    color: '#00a65a'
+                }, {
+                    title: 'Bolo de chocolate',
+                    start: '2019-10-25T20:00:00',
+                    color: '#3c8dbc'
+                },
+
+                {
+                    title: 'Bolo festa branco',
+                    start: '2019-10-12T12:00:00'
+                }, {
+                    title: 'Bolo 3kg',
+                    start: '2019-10-17T14:30:00'
+                }, {
+                    title: 'Bolo festa chocolate',
+                    start: '2019-10-15T17:30:00'
+                }, {
+                    title: 'bolo festa brilho',
+                    start: '2019-10-28T20:00:00'
+                },
+
+                // areas where "Meeting" must be dropped
+                {
+                    groupId: 'availableForMeeting',
+                    start: '2019-08-11T10:00:00',
+                    end: '2019-08-11T16:00:00',
+                    rendering: 'background'
+                }, {
+                    groupId: 'availableForMeeting',
+                    start: '2019-08-13T10:00:00',
+                    end: '2019-08-13T16:00:00',
+                    rendering: 'background'
+                },
+
+                // red areas where no events can be dropped
+                {
+                    start: '2019-08-24',
+                    end: '2019-08-28',
+                    overlap: false,
+                    rendering: 'background',
+                    color: '#ff9f89'
+                }, {
+                    start: '2019-08-06',
+                    end: '2019-08-08',
+                    overlap: false,
+                    rendering: 'background',
+                    color: '#ff9f89'
+                }
+            ],
+            // ao clicar num evento já adicionado, vemos mais detalhes 
+            eventClick: function(info) {
+                alert('Event: ' + info.event.title);
+
+                // change the border color just for fun
+                info.el.style.borderColor = 'white';
+            }
+        });
+
+        calendar.render();
+    });
+</script>
+<script src="js/jquery.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
